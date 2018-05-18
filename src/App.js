@@ -14,7 +14,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Body />
+        <Body text={this.props.text}/>
         <Footer />
       </div>
     );
@@ -24,7 +24,9 @@ class App extends Component {
 class Body extends Component {
   render() {
     return (
-      <button className="button">Button</button>
+      <div>
+        <button className="button">{this.props.text}</button>
+      </div>
     );
   }
 }
