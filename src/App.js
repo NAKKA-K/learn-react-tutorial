@@ -22,10 +22,22 @@ class App extends Component {
 }
 
 class Body extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      text: ""
+    };
+  }
+
+  submit(){
+    alert(this.state.text);
+  }
+
   render() {
     return (
       <div>
-        <button className="button">{this.props.text}</button>
+        <input type="text" value={this.state.text} onChange={(e) => this.setState({text: e.target.value})}/>
+        <button className="button" onClick={() => this.submit()}>{this.props.text}</button>
       </div>
     );
   }
