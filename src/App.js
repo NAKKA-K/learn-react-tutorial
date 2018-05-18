@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './asset/App.css';
+import './asset/button.css';
 
 class App extends Component {
   render() {
@@ -23,7 +24,7 @@ class App extends Component {
 class Body extends Component {
   render() {
     return (
-      <button className="btn" style={{color: "gray"}}/>
+      <button className="button">Button</button>
     );
   }
 }
