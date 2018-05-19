@@ -33,7 +33,7 @@ class LikeButton extends Component {
         fontSize: 11
       },
       like: {
-        display: "inline-block,
+        display: "inline-block",
         background: "#3b5998",
         padding: "0px 5px",
         rderRadius: 2,
@@ -76,10 +76,14 @@ class LikeButton extends Component {
   }
 
   render() {
+    const styles = this.styles();
     return (
-      <div>
-        いいねボタン建設予定地
-      </div>
+      <span style={styles.container}>
+        <span style={styles.like}>いいね!</span>
+        <span style={styles.counter}>
+          <span style={styles.counterBefore}>{" "}</span>999
+        </span>
+      </span>
     );
   }
 }
