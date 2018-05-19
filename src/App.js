@@ -23,14 +23,18 @@ class App extends Component {
 
 class LikeButton extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      hovered: false,
+      count: 999,
+      liked: false
+    }
   }
 
   styles(){
     return {
       container: {
-        fontFamily: "helvetica, arial, 'hiragino kaku gothic pro', meiryo, 'ms pgothic', sans-serif",
-        fontSize: 11
+        fontFamily: "helvetica, arial, 'hiragino kaku gothic pro', meiryo, 'ms pgothic', sans-serif", fontSize: 11
       },
       like: {
         display: "inline-block",
@@ -75,13 +79,32 @@ class LikeButton extends Component {
     };
   }
 
+  onMouseEnter(){
+    this.setState({hovered: true});
+  }
+
+  onMouseLeave(){
+    this.setState({hovered: false});
+  }
+
+  onClick(){
+    this.setState({
+      count: this.state.count + (this.state.liked ? -1 : 1),
+      liked: !this.state.liked
+    });
+  }
+
   render() {
     const styles = this.styles();
+    const likeStyle = this.state.hovered ? {...styles.like, ...styles.likeHover} : styles.like;
     return (
       <span style={styles.container}>
-        <span style={styles.like}>いいね!</span>
+        <span style={likeStyle}
+          onMouseEnter={this.onMouseEnter.bind(this)}
+          onMouseLeave={this.onMouseLeave.bind(this)}
+          onClick={this.onClick.bind(this)}>いいね!</span>
         <span style={styles.counter}>
-          <span style={styles.counterBefore}>{" "}</span>999
+          <span style={styles.counterBefore}>{" "}</span>{this.state.count}
         </span>
       </span>
     );
